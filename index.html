@@ -45,7 +45,7 @@
       "@type": "OfferCatalog",
       "name": "Services",
       "itemListElement": [
-        {"@type": "Offer", "price": "60", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "Haircut", "description": "Fade, taper, or classic cut"}},
+        {"@type": "Offer", "price": "60", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "Haircut", "description": "Precision haircut"}},
         {"@type": "Offer", "price": "70", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "Haircut + Beard", "description": "Cut with beard shape-up"}},
         {"@type": "Offer", "price": "55", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "Kids Haircut (12 and under)"}}
       ]
@@ -219,12 +219,17 @@
     #services { background: var(--bg-alt); }
     .prices { list-style: none; margin-top: 16px; border-top: 1.5px solid var(--ink); }
     .prices li {
-      display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline;
+      display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center;
       padding: 24px 0; border-bottom: 1px solid var(--line);
     }
     .prices .name { font-stretch: 120%; font-weight: 700; font-size: clamp(1.05rem, 4.4vw, 1.6rem); text-transform: uppercase; line-height: 1.2; }
     .prices .desc { display: block; font-size: 0.9rem; color: var(--muted); margin-top: 4px; font-stretch: 100%; text-transform: none; font-weight: 400; }
     .prices .amt { font-stretch: 125%; font-weight: 800; font-size: clamp(1.3rem, 5vw, 2rem); }
+    .book-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1.5px solid var(--ink); color: var(--ink); text-decoration: none; font-stretch: 120%; font-weight: 700; font-size: 0.8rem; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; transition: background .2s, color .2s; }
+    .book-link:hover, .book-link:focus-visible { background: var(--ink); color: #fff; }
+    .book-link span { transition: transform .2s; }
+    .book-link:hover span { transform: translateX(3px); }
+    @media (max-width: 380px) { .prices li { gap: 10px; } .book-link { padding: 7px 10px; } }
     .price-note { margin-top: 24px; color: var(--muted); font-size: 0.95rem; }
     .row-cta { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -305,6 +310,32 @@
       .split-head .row-cta { margin: 0 0 34px; }
       .hero-sub { font-size: 1.1rem; }
     }
+
+    /* Booking modal */
+    .bk { position: fixed; inset: 0; z-index: 100; display: flex; align-items: stretch; justify-content: center; visibility: hidden; opacity: 0; transition: opacity .25s, visibility .25s; }
+    .bk.open { visibility: visible; opacity: 1; }
+    .bk-back { position: absolute; inset: 0; background: rgba(17,17,17,.7); backdrop-filter: blur(3px); }
+    .bk-panel { position: relative; display: flex; flex-direction: column; width: 100%; height: 100vh; height: 100dvh; background: var(--bg); color: var(--ink); padding-top: env(safe-area-inset-top); }
+    .bk-head { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px var(--gutter); background: var(--dark); color: #fff; }
+    .bk-head .eyebrow { color: var(--gold); margin-bottom: 6px; }
+    .bk-title { font-size: clamp(1.1rem, 5vw, 1.5rem); }
+    .bk-close { flex: none; width: 44px; height: 44px; margin-right: -10px; display: grid; place-content: center; background: none; border: 0; color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer; transition: color .2s; }
+    .bk-close:hover, .bk-close:focus-visible { color: var(--gold); }
+    .bk-body { position: relative; flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; background: #fff; }
+    .bk-body iframe { display: block; width: 100%; height: 100%; min-height: 100%; border: 0; }
+    .bk-state { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 22px; padding: 32px var(--gutter); text-align: center; background: var(--bg); }
+    .bk-state.show { display: flex; }
+    .bk-loading { font-stretch: 115%; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); animation: bkpulse 1.2s ease-in-out infinite; }
+    @keyframes bkpulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+    .bk-fail p { max-width: 32ch; color: var(--muted); }
+    .bk-fail .btn { min-height: 60px; padding: 0 40px; font-size: 0.95rem; }
+    .bk-foot { flex: none; padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--bg); font-size: 0.78rem; color: var(--muted); text-align: center; }
+    .bk-foot a { white-space: nowrap; color: var(--ink); text-decoration-color: var(--gold); text-underline-offset: 3px; }
+    body.bk-open { overflow: hidden; }
+    @media (min-width: 700px) {
+      .bk { align-items: center; }
+      .bk-panel { width: min(680px, 92vw); height: 90vh; height: 90dvh; max-height: 900px; padding-top: 0; box-shadow: 0 24px 80px rgba(0,0,0,.5); }
+    }
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; scroll-behavior: auto !important; }
     }
@@ -375,12 +406,11 @@
             <span class="eyebrow">Services</span>
             <h2 class="display"><span>See the</span><span>price list.</span></h2>
           </div>
-          <div class="row-cta"><a class="btn btn-dark" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book Now</a></div>
         </div>
         <ul class="prices">
-          <li><span class="name">Haircut<span class="desc">Fade, taper or classic cut</span></span><span class="amt">$60</span></li>
-          <li><span class="name">Haircut + Beard<span class="desc">Full cut with beard shape-up</span></span><span class="amt">$70</span></li>
-          <li><span class="name">Kids Cut<span class="desc">12 and under</span></span><span class="amt">$55</span></li>
+          <li><span class="name">Haircut<span class="desc">Precision haircut</span></span><span class="amt">$60</span><a class="book-link" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book <span aria-hidden="true">&rarr;</span></a></li>
+          <li><span class="name">Haircut + Beard<span class="desc">Full cut with beard shape-up</span></span><span class="amt">$70</span><a class="book-link" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book <span aria-hidden="true">&rarr;</span></a></li>
+          <li><span class="name">Kids Cut<span class="desc">12 and under</span></span><span class="amt">$55</span><a class="book-link" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book <span aria-hidden="true">&rarr;</span></a></li>
         </ul>
         <p class="price-note">Every appointment is one hour. Never rushed.</p>
       </div>
@@ -493,6 +523,124 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+    })();
+  </script>
+  <div class="bk" id="bk" aria-hidden="true">
+    <div class="bk-back" id="bkBack"></div>
+    <div class="bk-panel" role="dialog" aria-modal="true" aria-labelledby="bkTitle" tabindex="-1" id="bkPanel">
+      <div class="bk-head">
+        <div>
+          <span class="eyebrow">Booking</span>
+          <h2 class="display bk-title" id="bkTitle">Book with Cello</h2>
+        </div>
+        <button class="bk-close" id="bkClose" type="button" aria-label="Close booking">&#10005;</button>
+      </div>
+      <div class="bk-body" id="bkBody">
+        <div class="bk-state" id="bkLoad" role="status"><div class="bk-loading">Loading calendar&hellip;</div></div>
+        <div class="bk-state bk-fail" id="bkFail">
+          <p>The calendar didn't load. You can book directly on Booksy.</p>
+          <a class="btn btn-dark" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Open booking</a>
+        </div>
+      </div>
+      <div class="bk-foot">Secure booking powered by Booksy &middot; Trouble? <a href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Open in Booksy &#8599;</a></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var BOOKSY = 'https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach';
+      var modal = document.getElementById('bk');
+      var panel = document.getElementById('bkPanel');
+      var body = document.getElementById('bkBody');
+      var loadEl = document.getElementById('bkLoad');
+      var failEl = document.getElementById('bkFail');
+      var closeBtn = document.getElementById('bkClose');
+      var uid = 'bk' + Math.random().toString(16).slice(2, 12);
+      var frame = null, ready = false, failed = false, timer = null, lastFocus = null, st = null;
+
+      function show(el, on) { el.classList.toggle('show', on); }
+      function markReady() {
+        if (ready) return;
+        ready = true; clearTimeout(timer); show(loadEl, false); show(failEl, false);
+        sendScroll();
+      }
+      function fail() { if (ready) return; failed = true; show(loadEl, false); show(failEl, true); }
+      function sendScroll() {
+        if (!frame || !frame.contentWindow) return;
+        try {
+          frame.contentWindow.postMessage({ uniqueId: uid, name: 'scroll', data: { container: body.getBoundingClientRect(), window: { width: window.innerWidth, height: window.innerHeight } } }, '*');
+        } catch (e) {}
+      }
+      function postForm(action, data) {
+        var f = document.createElement('form');
+        f.action = action; f.method = 'post'; f.target = '_blank';
+        Object.keys(data || {}).forEach(function (k) {
+          var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = data[k]; f.appendChild(i);
+        });
+        document.body.appendChild(f); f.submit(); f.remove();
+      }
+      window.addEventListener('message', function (e) {
+        var d = e.data;
+        if (!d || d.uniqueId !== uid || !d.events) return;
+        var ev = d.events;
+        if (ev.resize && ev.resize.height && frame) { frame.style.height = Math.max(ev.resize.height, 0) + 'px'; }
+        if (ev.ready) markReady();
+        if (ev.sendPost) postForm(ev.sendPost.action, ev.sendPost.data);
+        if (ev.goToUrl && ev.goToUrl.url) window.open(ev.goToUrl.url, '_blank', 'noopener');
+        if (ev.close) closeModal();
+      });
+      body.addEventListener('scroll', function () { clearTimeout(st); st = setTimeout(sendScroll, 100); }, { passive: true });
+      window.addEventListener('resize', function () { clearTimeout(st); st = setTimeout(sendScroll, 100); });
+
+      function build() {
+        frame = document.createElement('iframe');
+        frame.title = 'Book an appointment with Cuts By Cello';
+        frame.setAttribute('allow', 'payment');
+        frame.addEventListener('load', function () { setTimeout(markReady, 600); });
+        show(loadEl, true);
+        timer = setTimeout(fail, 12000);
+        frame.src = 'https://booksy.com/widget-2021/index.html?id=1296381&businessId=&appointmentUid=&lang=en&country=us&mode=inline&theme=default&uniqueId=' + uid;
+        body.insertBefore(frame, body.firstChild);
+      }
+      function openModal() {
+        if (modal.classList.contains('open')) return;
+        lastFocus = document.activeElement;
+        modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('bk-open');
+        if (!frame) build();
+        else if (failed) { failed = false; show(failEl, false); show(loadEl, true); timer = setTimeout(fail, 12000); frame.src = frame.src; }
+        closeBtn.focus();
+      }
+      function closeModal() {
+        if (!modal.classList.contains('open')) return;
+        modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('bk-open');
+        if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+      }
+      closeBtn.addEventListener('click', closeModal);
+      document.getElementById('bkBack').addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (e) {
+        if (!modal.classList.contains('open')) return;
+        if (e.key === 'Escape') { e.stopPropagation(); closeModal(); return; }
+        if (e.key === 'Tab') {
+          var els = Array.prototype.filter.call(panel.querySelectorAll('a[href], button, iframe, [tabindex]:not([tabindex="-1"])'), function (n) { return n.offsetParent !== null || n === closeBtn; });
+          if (!els.length) return;
+          var first = els[0], last = els[els.length - 1], a = document.activeElement;
+          if (!panel.contains(a) || a === panel) { e.preventDefault(); first.focus(); }
+          else if (e.shiftKey && a === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && a === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+      document.addEventListener('click', function (e) {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a || a.getAttribute('href') !== BOOKSY || panel.contains(a)) return;
+        if (/review/i.test(a.textContent)) return; /* Read Reviews stays on Booksy */
+        e.preventDefault();
+        var m = document.getElementById('menu');
+        if (m && m.contains(a)) return;
+        openModal();
+      });
     })();
   </script>
 </body>
