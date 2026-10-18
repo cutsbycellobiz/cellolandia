@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Cuts By Cello | Barber in West Palm Beach, FL - Fades &amp; Tapers</title>
   <meta name="description" content="Cuts By Cello: precision fades, tapers, beard work and kids cuts in West Palm Beach, FL. Haircuts from $55. Book online with Marcello.">
   <link rel="canonical" href="https://cellolandia.com/">
+  <meta name="theme-color" content="#111111">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23000'/%3E%3Ctext x='32' y='46' font-family='Helvetica,Arial,sans-serif' font-size='42' font-weight='800' text-anchor='middle' fill='%23d4a24c'%3EC%3C/text%3E%3C/svg%3E">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cuts By Cello">
   <meta property="og:title" content="Cuts By Cello | Barber in West Palm Beach, FL">
   <meta property="og:description" content="Precision fades, tapers, beard work and kids cuts in West Palm Beach. Book online with Marcello.">
   <meta property="og:url" content="https://cellolandia.com/">
   <meta property="og:image" content="https://cellolandia.com/images/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cuts By Cello | Barber in West Palm Beach, FL">
+  <meta name="twitter:description" content="Precision fades, tapers, beard work and kids cuts in West Palm Beach. Book online with Marcello.">
   <meta name="twitter:image" content="https://cellolandia.com/images/og.jpg">
   <script type="application/ld+json">
   {
@@ -48,112 +52,448 @@
     }
   }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/hero.jpg">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #0e0e0e; color: #f2f2f2; line-height: 1.6; }
+    :root {
+      --bg: #f3f2ef;
+      --bg-alt: #e7e6e2;
+      --ink: #111111;
+      --muted: #5f5f5c;
+      --line: #cfcdc8;
+      --dark: #121212;
+      --gold: #d4a24c;
+      --gold-ink: #8a6424;
+      --gutter: 20px;
+      --max: 1200px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: "Archivo", -apple-system, Helvetica, Arial, sans-serif;
+      font-stretch: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 
-    header { padding: 20px 0; border-bottom: 1px solid #222; }
-    header .wrap { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: 1px; }
-    .logo span { color: #d4a24c; }
-    nav a { margin-left: 20px; text-decoration: none; color: #bbb; }
-    nav a:hover { color: #fff; }
+    /* Display type: wide, heavy, uppercase */
+    .display {
+      font-stretch: 125%;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+    }
+    .eyebrow {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-ink);
+      margin-bottom: 18px;
+    }
 
-    .hero { padding: 100px 0; text-align: center; }
-    .hero h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 16px; }
-    .hero p { color: #aaa; font-size: 1.2rem; margin-bottom: 32px; }
-    .btn { display: inline-block; background: #d4a24c; color: #0e0e0e; padding: 14px 32px; border-radius: 6px; font-weight: 700; text-decoration: none; }
-    .btn:hover { background: #e8b65e; }
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 28px;
+      font-stretch: 115%; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.14em;
+      text-transform: uppercase; text-decoration: none;
+      border: 1.5px solid currentColor;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .btn-dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .btn-dark:hover, .btn-dark:focus-visible { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+    .btn-light { background: #fff; color: var(--ink); border-color: #fff; }
+    .btn-light:hover, .btn-light:focus-visible { background: var(--gold); border-color: var(--gold); }
+    .btn-ghost { background: transparent; color: var(--ink); }
+    .btn-ghost:hover, .btn-ghost:focus-visible { background: var(--ink); color: #fff; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-    section { padding: 70px 0; border-top: 1px solid #222; }
-    h2 { font-size: 2rem; margin-bottom: 30px; text-align: center; }
+    /* Top bar */
+    .topbar {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      color: #fff;
+      transition: background .3s, color .3s, box-shadow .3s;
+    }
+    .topbar .wrap { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; height: 64px; }
+    .topbar.solid { background: rgba(243,242,239,.96); color: var(--ink); box-shadow: 0 1px 0 var(--line); backdrop-filter: blur(8px); }
+    .burger {
+      justify-self: start; width: 44px; height: 44px; margin-left: -10px;
+      display: grid; place-content: center; gap: 6px;
+      background: none; border: 0; color: inherit; cursor: pointer;
+    }
+    .burger span { display: block; width: 24px; height: 2px; background: currentColor; transition: transform .25s, opacity .25s; }
+    .wordmark {
+      font-stretch: 125%; font-weight: 800; font-size: 0.95rem; letter-spacing: 0.06em;
+      text-transform: uppercase; text-decoration: none; white-space: nowrap;
+    }
+    .wordmark b { color: var(--gold); font-weight: 800; }
+    .top-book {
+      justify-self: end;
+      font-stretch: 115%; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.14em;
+      text-transform: uppercase; text-decoration: none; white-space: nowrap;
+      padding: 9px 12px; border: 1.5px solid currentColor;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .top-book:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
 
-    .services { display: grid; gap: 14px; max-width: 600px; margin: 0 auto; }
-    .service { display: flex; justify-content: space-between; padding: 16px 20px; background: #181818; border-radius: 8px; }
-    .service small { display: block; color: #888; }
-    .price { color: #d4a24c; font-weight: 700; font-size: 1.2rem; }
+    /* Menu overlay */
+    .menu {
+      position: fixed; inset: 0; z-index: 40;
+      background: var(--dark); color: #fff;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 96px var(--gutter) 40px;
+      opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
+    }
+    .menu.open { opacity: 1; visibility: visible; }
+    .menu nav { max-width: var(--max); width: 100%; margin: 0 auto; }
+    .menu a.m-link {
+      display: block; text-decoration: none;
+      font-stretch: 125%; font-weight: 800; text-transform: uppercase;
+      font-size: clamp(2rem, 9vw, 4.5rem); line-height: 1.15;
+      transition: color .2s;
+    }
+    .menu a.m-link:hover { color: var(--gold); }
+    .menu .m-meta { margin-top: 36px; color: #a9a9a6; font-size: 0.95rem; }
+    .menu .m-meta a { color: #fff; }
+    body.menu-open { overflow: hidden; }
+    body.menu-open .topbar { background: transparent; color: #fff; box-shadow: none; }
+    body.menu-open .burger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    body.menu-open .burger span:nth-child(2) { opacity: 0; }
+    body.menu-open .burger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-    .gallery img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #1c1c1c; border-radius: 8px; }
+    /* Hero */
+    .hero {
+      position: relative; min-height: 100vh; min-height: 100svh;
+      display: flex; align-items: flex-end;
+      color: #fff; background: #1a1a1a; overflow: hidden;
+    }
+    .hero img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: 50% 30%;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.25) 35%, rgba(0,0,0,.72) 75%, rgba(0,0,0,.85) 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1; width: 100%;
+      text-align: center; padding-bottom: clamp(96px, 14vh, 140px);
+    }
+    .hero .eyebrow { color: rgba(255,255,255,.85); }
+    .hero h1 { font-size: clamp(2rem, 12vw, 6.5rem); }
+    .hero h1 span { display: block; }
+    .hero-sub { margin: 22px auto 30px; max-width: 34ch; color: rgba(255,255,255,.85); font-size: 1rem; }
+    .proof {
+      margin-top: 22px; font-size: 0.82rem; letter-spacing: 0.06em; color: rgba(255,255,255,.85);
+    }
+    .proof .stars { color: var(--gold); letter-spacing: 0.1em; }
 
-    .info { text-align: center; color: #bbb; }
-    .info p { margin-bottom: 8px; }
-    .info a { color: #d4a24c; }
-    .map { max-width: 640px; margin: 24px auto 0; aspect-ratio: 16 / 10; border-radius: 8px; overflow: hidden; background: #181818; }
+    /* Sections */
+    section { padding: clamp(80px, 12vw, 150px) 0; }
+    .sec-head h2 { font-size: clamp(2rem, 8.6vw, 5.5rem); margin-bottom: 28px; }
+    .sec-head h2 span { display: block; }
+    .lede { font-size: 1.05rem; color: var(--muted); max-width: 46ch; }
+
+    /* Story */
+    .story { display: grid; gap: 48px; align-items: center; }
+    .story-img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; background: var(--bg-alt); }
+    .story-copy p + p { margin-top: 16px; }
+    .story-copy .btn { margin-top: 32px; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 40px; border-top: 1px solid var(--line); padding-top: 24px; }
+    .facts strong { display: block; font-stretch: 125%; font-weight: 800; font-size: 1.5rem; line-height: 1.1; }
+    .facts small { font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+    /* Services */
+    #services { background: var(--bg-alt); }
+    .prices { list-style: none; margin-top: 16px; border-top: 1.5px solid var(--ink); }
+    .prices li {
+      display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline;
+      padding: 24px 0; border-bottom: 1px solid var(--line);
+    }
+    .prices .name { font-stretch: 120%; font-weight: 700; font-size: clamp(1.05rem, 4.4vw, 1.6rem); text-transform: uppercase; line-height: 1.2; }
+    .prices .desc { display: block; font-size: 0.9rem; color: var(--muted); margin-top: 4px; font-stretch: 100%; text-transform: none; font-weight: 400; }
+    .prices .amt { font-stretch: 125%; font-weight: 800; font-size: clamp(1.3rem, 5vw, 2rem); }
+    .price-note { margin-top: 24px; color: var(--muted); font-size: 0.95rem; }
+    .row-cta { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* Portfolio */
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 16px; }
+    .grid figure { position: relative; overflow: hidden; background: var(--bg-alt); }
+    .grid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform .6s ease, filter .6s ease; filter: saturate(.9); }
+    .grid figure:hover img { transform: scale(1.04); filter: saturate(1); }
+
+    /* Reviews */
+    .reviews { background: var(--dark); color: #fff; text-align: center; }
+    .reviews .eyebrow { color: var(--gold); }
+    .score { font-stretch: 125%; font-weight: 800; font-size: clamp(5rem, 28vw, 13rem); line-height: 0.9; }
+    .score-stars { color: var(--gold); font-size: clamp(1.4rem, 6vw, 2.2rem); letter-spacing: 0.2em; margin: 14px 0 22px; }
+    .reviews h2 { font-size: clamp(1.6rem, 6.4vw, 3.6rem); }
+    .reviews p { color: #b5b5b2; margin: 18px auto 32px; max-width: 42ch; }
+    .reviews .row-cta { justify-content: center; }
+    .reviews .btn-ghost { color: #fff; }
+    .reviews .btn-ghost:hover { background: #fff; color: var(--ink); }
+
+    /* Find me */
+    .find { display: grid; gap: 40px; }
+    .info-block + .info-block { margin-top: 28px; }
+    .info-block h3 { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+    .info-block p, .info-block a { font-size: 1.1rem; }
+    .info-block a { text-decoration-color: var(--gold); text-underline-offset: 4px; }
+    .hours { list-style: none; max-width: 340px; }
+    .hours li { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 1rem; }
+    .hours li.off { color: var(--muted); }
+    .map { aspect-ratio: 4 / 3; background: var(--bg-alt); filter: grayscale(.85) contrast(1.05); }
     .map iframe { width: 100%; height: 100%; border: 0; display: block; }
-    .review { font-size: 0.9rem; margin-top: 16px; }
 
-    footer { padding: 30px 0; text-align: center; color: #666; border-top: 1px solid #222; font-size: 0.9rem; }
+    /* Footer */
+    footer { background: var(--dark); color: #a9a9a6; padding: 64px 0 40px; font-size: 0.9rem; }
+    footer .f-mark { color: #fff; font-stretch: 125%; font-weight: 800; text-transform: uppercase; font-size: clamp(1.8rem, 8vw, 4rem); line-height: 1; }
+    footer .f-mark b { color: var(--gold); }
+    .f-links { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 28px 0; }
+    .f-links a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.3); padding-bottom: 2px; }
+    .f-links a:hover { border-color: var(--gold); color: var(--gold); }
 
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2.2rem; }
-      nav { display: none; }
+    /* Sticky mobile book bar */
+    .mbar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+      display: grid; grid-template-columns: 1fr auto; gap: 8px;
+      padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+      background: rgba(17,17,17,.96); backdrop-filter: blur(8px);
+      transform: translateY(110%); transition: transform .3s ease;
+    }
+    .mbar.show { transform: none; }
+    .mbar .btn { min-height: 50px; }
+    .mbar .call { color: #fff; border-color: rgba(255,255,255,.4); padding: 0 18px; }
+    body { padding-bottom: 0; }
+
+    @media (max-width: 899px) {
+      body { padding-bottom: 72px; }
+      footer { padding-bottom: 110px; }
+    }
+    @media (max-width: 599px) {
+      .wordmark { font-size: 0.8rem; letter-spacing: 0.04em; }
+      .top-book { padding: 8px 10px; font-size: 0.64rem; letter-spacing: 0.1em; }
+    }
+    @media (max-width: 359px) {
+      .wordmark { font-size: 0.7rem; }
+    }
+    @media (min-width: 900px) {
+      :root { --gutter: 40px; }
+      .topbar .wrap { height: 80px; }
+      .wordmark { font-size: 1.15rem; }
+      .top-book { padding: 11px 18px; font-size: 0.75rem; }
+      .mbar { display: none; }
+      .story { grid-template-columns: 1fr 1.1fr; gap: 80px; }
+      .grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .hero h1 { font-size: clamp(2rem, min(9vw, 13vh), 6.5rem); }
+      .hero h1 span { white-space: nowrap; }
+      .story .sec-head h2 { font-size: clamp(2.4rem, 4.6vw, 4.4rem); }
+      .find { grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+      .split-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+      .split-head .row-cta { margin: 0 0 34px; }
+      .hero-sub { font-size: 1.1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
     }
   </style>
 </head>
 <body>
 
-  <header>
+  <header class="topbar" id="topbar">
     <div class="wrap">
-      <div class="logo">CUTS BY <span>CELLO</span></div>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#gallery">Work</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="wordmark" href="#top">Cuts By <b>Cello</b></a>
+      <a class="top-book" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book Now</a>
     </div>
   </header>
 
-  <div class="hero">
-    <div class="wrap">
-      <h1>Fresh cuts. Clean lines.<br><span style="font-size:1.4rem;font-weight:600;color:#d4a24c">Barber in West Palm Beach, FL</span></h1>
-      <p>Fades, tapers and beard work by Marcello</p>
-      <a class="btn" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book Now</a>
-    </div>
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav aria-label="Main">
+      <a class="m-link" href="#story">Story</a>
+      <a class="m-link" href="#services">Prices</a>
+      <a class="m-link" href="#work">The Work</a>
+      <a class="m-link" href="#reviews">Reviews</a>
+      <a class="m-link" href="#find">Find Me</a>
+      <div class="m-meta">
+        <p>Tue&ndash;Sun 10am&ndash;7pm &middot; Mon closed</p>
+        <p><a href="tel:+15615436472">(561) 543-6472</a> &middot; <a href="https://www.instagram.com/cutsbycello/" target="_blank" rel="noopener">@cutsbycello</a></p>
+      </div>
+    </nav>
   </div>
 
-  <section id="services">
-    <div class="wrap">
-      <h2>Services</h2>
-      <div class="services">
-        <div class="service"><div>Haircut<small>Fade, taper, or classic cut</small></div><div class="price">$60</div></div>
-        <div class="service"><div>Haircut + Beard<small>Cut with beard shape-up</small></div><div class="price">$70</div></div>
-        <div class="service"><div>Kids Cut<small>12 and under</small></div><div class="price">$55</div></div>
+  <main id="top">
+    <section class="hero" aria-label="Cuts By Cello" style="padding:0">
+      <img src="images/hero.jpg" alt="Client with a fresh skin fade and sharp line-up at Cuts By Cello" width="1440" height="1920" fetchpriority="high">
+      <div class="hero-inner wrap">
+        <span class="eyebrow">Barber &middot; West Palm Beach, FL</span>
+        <h1 class="display"><span>Clean cuts.</span><span>No rush.</span></h1>
+        <p class="hero-sub">Fades, tapers and beard work by Marcello. Every appointment gets the full hour.</p>
+        <a class="btn btn-light" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book Now</a>
+        <p class="proof"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 &middot; 50 reviews on Booksy</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="gallery">
-    <div class="wrap">
-      <h2>Fades &amp; Tapers in West Palm Beach</h2>
-      <div class="gallery">
-        <img src="images/gallery-1.jpg" alt="Sharp skin fade with a clean hard part by Cuts By Cello" width="1080" height="1350" loading="lazy">
-        <img src="images/gallery-2.jpg" alt="Low fade with a full beard shape-up, Cuts By Cello" width="1080" height="1350" loading="lazy">
-        <img src="images/gallery-3.jpg" alt="Textured crop with a mid taper fade by Cuts By Cello" width="1080" height="1350" loading="lazy">
-        <img src="images/gallery-4.jpg" alt="Messy textured taper fade by Cuts By Cello" width="1080" height="1350" loading="lazy">
-        <img src="images/gallery-5.jpg" alt="Textured fringe with a fade and mustache cleanup by Cuts By Cello" width="1080" height="1350" loading="lazy">
-        <img src="images/gallery-6.jpg" alt="Bleached platinum top with fade and beard by Cuts By Cello" width="1080" height="1350" loading="lazy">
+    <section id="story">
+      <div class="wrap story">
+        <img class="story-img" src="images/story.jpg" alt="Low taper fade with a swept-back top by Cuts By Cello" width="1080" height="1350" loading="lazy">
+        <div class="story-copy">
+          <div class="sec-head">
+            <span class="eyebrow">My Story</span>
+            <h2 class="display"><span>3 years</span><span>behind the</span><span>chair.</span></h2>
+          </div>
+          <p class="lede">I'm Marcello. I book every client for a full hour, so nobody gets rushed out the door and nothing leaves the chair half done.</p>
+          <p class="lede">Same barber every visit. I learn how your hair grows, how you like it, and I cut it that way every time.</p>
+          <div class="facts">
+            <div><strong>3 yrs</strong><small>Cutting</small></div>
+            <div><strong>60 min</strong><small>Every visit</small></div>
+            <div><strong>5.0&#9733;</strong><small>On Booksy</small></div>
+          </div>
+          <a class="btn btn-dark" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book Now</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact">
-    <div class="wrap info">
-      <h2>Find Me in West Palm Beach</h2>
-      <p>📍 <a href="https://www.google.com/maps?q=1017+N+State+Rd+7+Suite+114+Royal+Palm+Beach+FL+33411" target="_blank" rel="noopener">1017 N State Rd 7, Suite 114, Royal Palm Beach, FL 33411</a></p>
-      <p>🕒 Tue&ndash;Sun 10am&ndash;7pm &middot; Monday closed</p>
-      <p>📞 <a href="tel:+15615436472">(561) 543-6472</a></p>
-      <p>📱 Instagram: <a href="https://www.instagram.com/cutsbycello/" target="_blank" rel="noopener">@cutsbycello</a></p>
-      <div class="map"><iframe src="https://www.google.com/maps?q=1017+N+State+Rd+7+Suite+114+Royal+Palm+Beach+FL+33411&amp;output=embed" title="Map to Cuts By Cello, Royal Palm Beach" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
-      <p class="review"><a href="https://search.google.com/local/writereview?placeid=ChIJmzFsVtov2YgRzzlpJu22d-0" target="_blank" rel="noopener">Leave a Google review</a></p>
-    </div>
-  </section>
+    <section id="services">
+      <div class="wrap">
+        <div class="sec-head split-head">
+          <div>
+            <span class="eyebrow">Services</span>
+            <h2 class="display"><span>See the</span><span>price list.</span></h2>
+          </div>
+          <div class="row-cta"><a class="btn btn-dark" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book Now</a></div>
+        </div>
+        <ul class="prices">
+          <li><span class="name">Haircut<span class="desc">Fade, taper or classic cut</span></span><span class="amt">$60</span></li>
+          <li><span class="name">Haircut + Beard<span class="desc">Full cut with beard shape-up</span></span><span class="amt">$70</span></li>
+          <li><span class="name">Kids Cut<span class="desc">12 and under</span></span><span class="amt">$55</span></li>
+        </ul>
+        <p class="price-note">Every appointment is one hour. Never rushed.</p>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="sec-head split-head">
+          <div>
+            <span class="eyebrow">The Work</span>
+            <h2 class="display"><span>What I do</span><span>best.</span></h2>
+          </div>
+          <div class="row-cta"><a class="btn btn-ghost" href="https://www.instagram.com/cutsbycello/" target="_blank" rel="noopener">More on Instagram</a></div>
+        </div>
+        <div class="grid">
+          <figure><img src="images/gallery-1.jpg" alt="Sharp skin fade with a clean hard part by Cuts By Cello" width="1080" height="1350" loading="lazy"></figure>
+          <figure><img src="images/gallery-2.jpg" alt="Low fade with a full beard shape-up, Cuts By Cello" width="1080" height="1350" loading="lazy"></figure>
+          <figure><img src="images/gallery-3.jpg" alt="Textured crop with a mid taper fade by Cuts By Cello" width="1080" height="1350" loading="lazy"></figure>
+          <figure><img src="images/gallery-5.jpg" alt="Textured fringe with a fade and mustache cleanup by Cuts By Cello" width="1080" height="1350" loading="lazy"></figure>
+          <figure><img src="images/gallery-6.jpg" alt="Bleached platinum top with fade and beard by Cuts By Cello" width="1080" height="1350" loading="lazy"></figure>
+          <figure><img src="images/gallery-4.jpg" alt="Messy textured taper fade by Cuts By Cello" width="1080" height="1350" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="reviews">
+      <div class="wrap">
+        <span class="eyebrow">Reviews</span>
+        <div class="score">5.0</div>
+        <div class="score-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <h2 class="display">50 five-star reviews<br>on Booksy.</h2>
+        <p>Don't take my word for it. Read what clients say, then grab a spot before the week fills up.</p>
+        <div class="row-cta">
+          <a class="btn btn-light" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book Now</a>
+          <a class="btn btn-ghost" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Read Reviews</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="find">
+      <div class="wrap find">
+        <div>
+          <div class="sec-head">
+            <span class="eyebrow">Find Me</span>
+            <h2 class="display"><span>Pull up.</span></h2>
+          </div>
+          <div class="info-block">
+            <h3>Address</h3>
+            <p><a href="https://www.google.com/maps?q=1017+N+State+Rd+7+Suite+114+Royal+Palm+Beach+FL+33411" target="_blank" rel="noopener">1017 N State Rd 7, Suite 114<br>Royal Palm Beach, FL 33411</a></p>
+          </div>
+          <div class="info-block">
+            <h3>Hours</h3>
+            <ul class="hours">
+              <li><span>Tuesday &ndash; Sunday</span><span>10am &ndash; 7pm</span></li>
+              <li class="off"><span>Monday</span><span>Closed</span></li>
+            </ul>
+          </div>
+          <div class="info-block">
+            <h3>Contact</h3>
+            <p><a href="tel:+15615436472">(561) 543-6472</a></p>
+            <p><a href="https://www.instagram.com/cutsbycello/" target="_blank" rel="noopener">@cutsbycello</a></p>
+          </div>
+          <div class="row-cta"><a class="btn btn-dark" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book Now</a></div>
+        </div>
+        <div class="map">
+          <iframe src="https://www.google.com/maps?q=1017+N+State+Rd+7+Suite+114+Royal+Palm+Beach+FL+33411&amp;output=embed" title="Map to Cuts By Cello, Royal Palm Beach" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2026 Cuts By Cello
+    <div class="wrap">
+      <div class="f-mark">Cuts By <b>Cello</b></div>
+      <div class="f-links">
+        <a href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book on Booksy</a>
+        <a href="https://search.google.com/local/writereview?placeid=ChIJmzFsVtov2YgRzzlpJu22d-0" target="_blank" rel="noopener">Leave a Google review</a>
+        <a href="https://www.instagram.com/cutsbycello/" target="_blank" rel="noopener">Instagram</a>
+        <a href="tel:+15615436472">(561) 543-6472</a>
+      </div>
+      <p>&copy; 2026 Cuts By Cello &middot; Barber in West Palm Beach, FL</p>
+    </div>
   </footer>
 
+  <div class="mbar" id="mbar">
+    <a class="btn btn-light" href="https://booksy.com/en-us/1296381_marcello-cuts-by-cello_barber-shop_15961_west-palm-beach" target="_blank" rel="noopener">Book Now</a>
+    <a class="btn call" href="tel:+15615436472" aria-label="Call (561) 543-6472">Call</a>
+  </div>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('topbar');
+      var mbar = document.getElementById('mbar');
+      var burger = document.getElementById('burger');
+      var menu = document.getElementById('menu');
+      function onScroll() {
+        var y = window.scrollY || 0;
+        bar.classList.toggle('solid', y > 40);
+        mbar.classList.toggle('show', y > window.innerHeight * 0.6);
+      }
+      function setMenu(open) {
+        document.body.classList.toggle('menu-open', open);
+        menu.classList.toggle('open', open);
+        menu.setAttribute('aria-hidden', String(!open));
+        burger.setAttribute('aria-expanded', String(open));
+        burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+      burger.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+      menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
 </body>
 </html>
